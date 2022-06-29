@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93698709011",
+    "project_id": "epharma-app-c99d0",
+    "storage_bucket": "epharma-app-c99d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93698709011:android:c5e1e3c2dfeeeaf15451e6",
+        "android_client_info": {
+          "package_name": "com.epharma.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93698709011-ia300tvg9uuh7ph90anmq682u63m100r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHgq-Kz8MHoZ6H-5ig97TCyAvHhAwtqNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93698709011-ia300tvg9uuh7ph90anmq682u63m100r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
