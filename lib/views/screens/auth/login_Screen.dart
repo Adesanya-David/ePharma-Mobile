@@ -14,9 +14,23 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Welcome, Please Enter your details to unlock Maximum potentials", style: TextStyle(fontWeight: FontWeight.bold),),
+            Stack(
+              children: [
+                CircleAvatar(
+                  radius: 64,
+                  backgroundColor: Colors.grey,
+                ),
+                Positioned(
+                  right: 5,
+                  bottom: 1,
+                  child: Icon(Icons.add_a_photo),
+
+                )
+              ],
+            ),
+            // Text("Welcome, Please Enter your details to unlock Maximum potentials", style: TextStyle(fontWeight: FontWeight.bold),),
             SizedBox(
-              height: 20,
+              height: 40,
             ),
             TextField(
               decoration: InputDecoration(
