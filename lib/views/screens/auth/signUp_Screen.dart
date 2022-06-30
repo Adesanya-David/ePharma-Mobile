@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/controllers/authController.dart';
 import 'package:flutter_app/views/screens/auth/login_Screen.dart';
 
 import '../../../const.dart';
 
 class Signup extends StatelessWidget {
-  const Signup({Key? key}) : super(key: key);
-
+  // const Signup({Key? key}) : super(key: key);
+  final TextEditingController _fullnameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +39,7 @@ class Signup extends StatelessWidget {
             height: 40,
           ),
           TextField(
+            controller: _fullnameController,
             decoration: InputDecoration(
                 filled: true,
                 hintText: 'Enter Full Name',
@@ -48,6 +53,7 @@ class Signup extends StatelessWidget {
             height: 15,
           ),
           TextField(
+          controller: _usernameController,
           decoration: InputDecoration(
           filled: true,
               hintText: 'Enter Username',
@@ -61,6 +67,7 @@ class Signup extends StatelessWidget {
             height: 15,
           ),
           TextField(
+            controller: _emailController,
             decoration: InputDecoration(
                 filled: true,
                 hintText: 'Enter Email Address',
@@ -74,6 +81,7 @@ class Signup extends StatelessWidget {
             height: 15,
           ),
           TextField(
+            controller: _passwordController ,
             decoration: InputDecoration(
                 filled: true,
                 hintText: 'Enter Password',
@@ -97,7 +105,10 @@ class Signup extends StatelessWidget {
                   onTap: (){
                     print('Account Created Successfully');
                   },
-                  child: Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),))
+                  child: InkWell(
+                      onTap: () async{
+                        await AuthController().signUp(_fullnameController.text, _usernameController.text, _emailController.text, _passwordController.text);
+                      }, child: Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)))
             ,)
           ),
           SizedBox(

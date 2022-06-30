@@ -4,7 +4,7 @@ import 'package:flutter_app/const.dart';
 import 'package:flutter_app/views/screens/auth/signUp_Screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  // const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
