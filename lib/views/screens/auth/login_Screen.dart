@@ -21,12 +21,12 @@ class LoginScreen extends StatelessWidget {
                       radius: 64,
                       backgroundColor: Colors.grey,
                     ),
-                    Positioned(
-                      right: 5,
-                      bottom: 1,
-                      child: Icon(Icons.add_a_photo),
-
-                    )
+                    // Positioned(
+                    //   right: 5,
+                    //   bottom: 1,
+                    //   child: Icon(Icons.add_a_photo),
+                    //
+                    // )
                   ],
                 ),
                 // Text("Welcome, Please Enter your details to unlock Maximum potentials", style: TextStyle(fontWeight: FontWeight.bold),),
