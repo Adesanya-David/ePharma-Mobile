@@ -1,15 +1,36 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/controllers/authController.dart';
 import 'package:flutter_app/views/screens/auth/login_Screen.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../const.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
   // const Signup({Key? key}) : super(key: key);
   final TextEditingController _fullnameController = TextEditingController();
+
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
+  Uint8List? _image;
+
+  selectImage()async{
+   Uint8List im = await AuthController().pickImage(ImageSource.gallery);
+   setState((){
+      _image = im;
+   });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +43,23 @@ class Signup extends StatelessWidget {
           children: [
           Stack(
             children: [
+              _image != null?
               CircleAvatar(
                 radius: 64,
                 backgroundColor: Colors.grey,
+                backgroundImage: MemoryImage(_image!)
+              ):CircleAvatar(
+                radius: 64,
+                backgroundColor: Colors.grey,
+                backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBwgJx82LA3WoY4OHduFMraX31HIdpLMAdmYCfY8Kdf8yx2PpeZraq9029etC_w3RrtDM&usqp=CAU'),
               ),
               Positioned(
                 right: 5,
                 bottom: 1,
-                child: Icon(Icons.add_a_photo),
-
-              )
+                child: InkWell(
+                    onTap: selectImage,
+                    child: Icon(Icons.add_a_photo))
+              ),
             ],
           ),
           // Text("Welcome, Please Enter your details to unlock Maximum potentials", style: TextStyle(fontWeight: FontWeight.bold),),
