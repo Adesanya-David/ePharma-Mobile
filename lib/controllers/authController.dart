@@ -22,7 +22,7 @@ class AuthController{
     try{
       if(full_name.isNotEmpty && username.isNotEmpty && password.isNotEmpty && email.isNotEmpty){
         UserCredential cred = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
-        firebaseStore.collection('users').doc(cred.user!.uid).set({
+        await firebaseStore.collection('users').doc(cred.user!.uid).set({
           'fullName' : full_name,
           'username' : username,
           'email' : email,
