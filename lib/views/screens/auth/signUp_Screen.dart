@@ -43,7 +43,12 @@ class _SignupState extends State<Signup> {
           children: [
           Stack(
             children: [
+              _image != null?
               CircleAvatar(
+                radius: 64,
+                backgroundColor: Colors.grey,
+                backgroundImage: MemoryImage(_image!)
+              ):CircleAvatar(
                 radius: 64,
                 backgroundColor: Colors.grey,
                 backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBwgJx82LA3WoY4OHduFMraX31HIdpLMAdmYCfY8Kdf8yx2PpeZraq9029etC_w3RrtDM&usqp=CAU'),
