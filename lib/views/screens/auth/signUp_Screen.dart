@@ -135,7 +135,11 @@ class _SignupState extends State<Signup> {
                   },
                   child: InkWell(
                       onTap: () async{
-                        await AuthController().signUp(_fullnameController.text, _usernameController.text, _emailController.text, _passwordController.text);
+                        await AuthController().signUp(_fullnameController.text,
+                            _usernameController.text,
+                            _emailController.text,
+                            _passwordController.text,
+                            _image);
                       }, child: Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)))
             ,)
           ),
