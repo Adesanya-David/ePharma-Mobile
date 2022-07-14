@@ -60,7 +60,34 @@ class AuthController{
     return res;
     }
   }
-  
+
+Future <String> signIn (String full_name, String username, String email, String password, Uint8List? image) async{
+  String res = "An error occurred";
+  try{
+    if(full_name.isNotEmpty && username.isNotEmpty && password.isNotEmpty && email.isNotEmpty && image != null){
+      UserCredential cred = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+
+      // String downloadUrl = await _uploadImagetoStorage(image);
+
+      await firebaseStore.collection('users').doc(cred.user!.uid).set({
+        'fullName' : full_name,
+        'username' : username,
+        'email' : email,
+        // 'image' : downloadUrl,
+      });
+      print(cred.user!.email);
+      res = 'success';
+    }
+    else{
+      res = 'Fields cannot be empty';
+    }
+
+  }catch(e) {
+    res = e.toString();
+  }
+  return res;
+}
+}
   showSnackBar(String content, BuildContext context){
       ScaffoldMessenger.of(context).showSnackBar(showSnackBar(content, (context)));
   }
