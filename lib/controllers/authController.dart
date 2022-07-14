@@ -87,7 +87,7 @@ Future <String> signIn (String full_name, String username, String email, String 
   }
   return res;
 }
-}
+
   showSnackBar(String content, BuildContext context){
       ScaffoldMessenger.of(context).showSnackBar(showSnackBar(content, (context)));
   }
