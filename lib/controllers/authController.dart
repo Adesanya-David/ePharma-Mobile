@@ -61,7 +61,7 @@ class AuthController{
     }
   }
 
-Future <String> signIn (String full_name, String username, String email, String password, Uint8List? image) async{
+Future <String> logIn (String full_name, String username, String email, String password, Uint8List? image) async{
   String res = "An error occurred";
   try{
     if(full_name.isNotEmpty && username.isNotEmpty && password.isNotEmpty && email.isNotEmpty && image != null){
@@ -87,7 +87,7 @@ Future <String> signIn (String full_name, String username, String email, String 
   }
   return res;
 }
-}
+
   showSnackBar(String content, BuildContext context){
       ScaffoldMessenger.of(context).showSnackBar(showSnackBar(content, (context)));
   }
