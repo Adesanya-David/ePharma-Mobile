@@ -1,11 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/const.dart';
 import 'package:flutter_app/views/screens/auth/login_Screen.dart';
+import 'package:flutter_app/views/screens/auth/loginpage.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -23,10 +23,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
-      home: LoginScreen()
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme:
+            ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
+        home: LoginPage());
   }
 }
