@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/screens/auth/forgot_password.dart';
+import 'package:flutter_app/views/screens/auth/signUp_Screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LoginPage extends StatefulWidget {
@@ -110,11 +112,12 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               cursorColor: Colors.black,
               decoration: InputDecoration(
+                filled: true,
                 contentPadding: EdgeInsets.all(0.0),
                 labelText: 'Email',
                 hintText: 'Username or e-mail',
                 labelStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 14.0,
                   fontWeight: FontWeight.w400,
                 ),
@@ -124,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 prefixIcon: Icon(
                   Iconsax.user,
-                  color: Colors.black,
+                  color: Colors.white,
                   size: 18,
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -147,21 +150,22 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               cursorColor: Colors.black,
               decoration: InputDecoration(
+                filled: true,
                 contentPadding: EdgeInsets.all(0.0),
                 labelText: 'Password',
                 hintText: 'Password',
                 hintStyle: TextStyle(
-                  color: Colors.grey,
+                  color: Colors.white,
                   fontSize: 14.0,
                 ),
                 labelStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 14.0,
                   fontWeight: FontWeight.w400,
                 ),
                 prefixIcon: Icon(
                   Iconsax.key,
-                  color: Colors.black,
+                  color: Colors.white,
                   size: 18,
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -182,11 +186,14 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //   builder: (context) => forgotPassword()));
+                  },
                   child: Text(
                     'Forgot Password?',
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 14.0,
                         fontWeight: FontWeight.w400),
                   ),
@@ -199,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
             MaterialButton(
               onPressed: () {},
               height: 45,
-              color: Colors.black,
+              color: Colors.blueGrey,
               child: Text(
                 "Login",
                 style: TextStyle(color: Colors.white, fontSize: 16.0),
@@ -218,16 +225,19 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   'Don\'t have an account?',
                   style: TextStyle(
-                      color: Colors.grey.shade600,
+                      color: Colors.grey,
                       fontSize: 14.0,
                       fontWeight: FontWeight.w400),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Signup()));
+                  },
                   child: Text(
                     'Register',
                     style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontSize: 14.0,
                         fontWeight: FontWeight.w400),
                   ),
