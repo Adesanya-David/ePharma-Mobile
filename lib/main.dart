@@ -2,7 +2,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/const.dart';
-import 'package:flutter_app/views/screens/auth/login_Screen.dart';
 import 'package:flutter_app/views/screens/auth/loginpage.dart';
 
 void main() async {
