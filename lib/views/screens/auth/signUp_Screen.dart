@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -14,6 +16,21 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  bool _isVisible = false;
+  bool _isPasswordEightCharacters = false;
+  bool _hasOneNumber = false;
+
+  onPasswordChanged(String password) {
+    final numericRegex = RegExp(r'[0-9]');
+    setState(() {
+      _isPasswordEightCharacters = false;
+      if (password.length >= 8) _isPasswordEightCharacters = true;
+
+      _hasOneNumber = false;
+      if (numericRegex.hasMatch(password)) _hasOneNumber = true;
+    });
+  }
+
   // const Signup({Key? key}) : super(key: key);
   final TextEditingController _fullnameController = TextEditingController();
 
@@ -101,56 +118,47 @@ class _SignupState extends State<Signup> {
             height: 15,
           ),
           TextField(
+            obscureText: !_isVisible,
             controller: _passwordController,
             decoration: InputDecoration(
-                filled: true,
-                hintText: 'Enter Password',
-                border: OutlineInputBorder(borderSide: BorderSide.none),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black))),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isVisible = !_isVisible;
+                  });
+                },
+                icon: _isVisible
+                    ? Icon(
+                        Icons.visibility,
+                        color: Colors.black,
+                      )
+                    : Icon(Icons.visibility_off, color: Colors.grey),
+              ),
+              filled: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black)),
+              hintText: 'Enter Password',
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            ),
           ),
-          // SizedBox(
-          //   height: 15,
-          // ),
-          // Container(
-          //     width: MediaQuery.of(context).size.width - 40,
-          //     height: 50,
-          //     decoration: BoxDecoration(
-          //       color: buttonColor,
-          //     ),
-          //     child: Center(
-          //       child: InkWell(
-          //           onTap: () {
-          //             print('Account Created Successfully');
-          //           },
-          //           child: InkWell(
-          //               onTap: () async {
-          //                 await AuthController().signUp(
-          //                     _fullnameController.text,
-          //                     _usernameController.text,
-          //                     _emailController.text,
-          //                     _passwordController.text,
-          //                     _image);
-          //               },
-          //               child: Text(
-          //                 'Sign Up',
-          //                 style: TextStyle(
-          //                     fontWeight: FontWeight.bold, fontSize: 20),
-          //               ))),
-          //     )),
-          // SizedBox(
-          //   height: 10,
-          // ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     Text(
-          //       'Already have an account?',
-          //       style: TextStyle(
-          //         fontSize: 15,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
+          Row(
+            children: [
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(50)),
+              )
+            ],
+          ),
           SizedBox(
             height: 30,
           ),
@@ -166,7 +174,7 @@ class _SignupState extends State<Signup> {
             height: 45,
             color: Colors.blueGrey,
             child: Text(
-              "Sign Up",
+              "Create Account",
               style: TextStyle(color: Colors.white, fontSize: 16.0),
             ),
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
