@@ -118,6 +118,7 @@ class _SignupState extends State<Signup> {
             height: 15,
           ),
           TextField(
+            onChanged: (password) => onPasswordChanged(password),
             obscureText: !_isVisible,
             controller: _passwordController,
             decoration: InputDecoration(
@@ -147,6 +148,9 @@ class _SignupState extends State<Signup> {
                   EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               AnimatedContainer(
@@ -154,9 +158,52 @@ class _SignupState extends State<Signup> {
                 width: 20,
                 height: 20,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade400),
+                    color: _isPasswordEightCharacters
+                        ? Colors.green
+                        : Colors.transparent,
+                    border: _isPasswordEightCharacters
+                        ? Border.all(color: Colors.transparent)
+                        : Border.all(color: Colors.grey.shade400),
                     borderRadius: BorderRadius.circular(50)),
-              )
+                child: Center(
+                    child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 12,
+                )),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text("Contains at least 8 Characters")
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                    color: _hasOneNumber ? Colors.green : Colors.transparent,
+                    border: _hasOneNumber
+                        ? Border.all(color: Colors.transparent)
+                        : Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(50)),
+                child: Center(
+                    child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 12,
+                )),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text("Contains at least one numeric Character")
             ],
           ),
           SizedBox(

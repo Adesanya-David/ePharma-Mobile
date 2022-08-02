@@ -153,7 +153,12 @@ class _LoginPageState extends State<LoginPage> {
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
-                  onPressed: {},
+                  onPressed: () {
+                    setState(() {
+                      _isVisible:
+                      !_isVisible;
+                    });
+                  },
                   icon: _isVisible
                       ? Icon(
                           Icons.visibility,
