@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                 prefixIcon: Icon(
                   Iconsax.key,
                   color: Colors.white,
-                  size: 18,
+                  size: 10,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey.shade200, width: 2),

@@ -85,7 +85,7 @@ class _SignupState extends State<Signup> {
             controller: _fullnameController,
             decoration: InputDecoration(
                 filled: true,
-                hintText: 'Enter Full Name',
+                hintText: 'Full Name',
                 border: OutlineInputBorder(borderSide: BorderSide.none),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black))),
@@ -97,7 +97,7 @@ class _SignupState extends State<Signup> {
             controller: _usernameController,
             decoration: InputDecoration(
                 filled: true,
-                hintText: 'Enter Username',
+                hintText: 'Username',
                 border: OutlineInputBorder(borderSide: BorderSide.none),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black))),
@@ -108,11 +108,18 @@ class _SignupState extends State<Signup> {
           TextField(
             controller: _emailController,
             decoration: InputDecoration(
-                filled: true,
-                hintText: 'Enter Email Address',
-                border: OutlineInputBorder(borderSide: BorderSide.none),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black))),
+              filled: true,
+              hintText: 'Email Address',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black)),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            ),
           ),
           SizedBox(
             height: 15,
@@ -143,9 +150,9 @@ class _SignupState extends State<Signup> {
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.black)),
-              hintText: 'Enter Password',
+              hintText: 'Password',
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             ),
           ),
           SizedBox(
@@ -173,7 +180,7 @@ class _SignupState extends State<Signup> {
                 )),
               ),
               SizedBox(
-                height: 10,
+                width: 10,
               ),
               Text("Contains at least 8 Characters")
             ],
@@ -201,9 +208,9 @@ class _SignupState extends State<Signup> {
                 )),
               ),
               SizedBox(
-                height: 10,
+                width: 10,
               ),
-              Text("Contains at least one numeric Character")
+              Text("Contains at least one number")
             ],
           ),
           SizedBox(
