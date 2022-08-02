@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/views/screens/auth/forgot_password.dart';
+// import 'package:flutter_app/views/screens/auth/forgot_password.dart';
 import 'package:flutter_app/views/screens/auth/signUp_Screen.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -14,6 +14,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   int activeIndex = 0;
+
+  bool _isVisible = false;
 
   @override
   void initState() {
@@ -114,8 +116,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(
                 filled: true,
                 contentPadding: EdgeInsets.all(0.0),
-                labelText: 'Email',
-                hintText: 'Username or e-mail',
+                hintText: 'Username or E-mail',
                 labelStyle: TextStyle(
                   color: Colors.white,
                   fontSize: 14.0,
@@ -148,11 +149,20 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
             TextField(
-              cursorColor: Colors.black,
+              obscureText: !_isVisible,
+              cursorColor: Colors.white,
               decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: {},
+                  icon: _isVisible
+                      ? Icon(
+                          Icons.visibility,
+                          color: Colors.black,
+                        )
+                      : Icon(Icons.visibility_off, color: Colors.grey),
+                ),
                 filled: true,
                 contentPadding: EdgeInsets.all(0.0),
-                labelText: 'Password',
                 hintText: 'Password',
                 hintStyle: TextStyle(
                   color: Colors.white,
