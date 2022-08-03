@@ -84,11 +84,18 @@ class _SignupState extends State<Signup> {
           TextField(
             controller: _fullnameController,
             decoration: InputDecoration(
-                filled: true,
-                hintText: 'Enter Full Name',
-                border: OutlineInputBorder(borderSide: BorderSide.none),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black))),
+              filled: true,
+              hintText: 'Full Name',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black)),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            ),
           ),
           SizedBox(
             height: 15,
@@ -96,11 +103,18 @@ class _SignupState extends State<Signup> {
           TextField(
             controller: _usernameController,
             decoration: InputDecoration(
-                filled: true,
-                hintText: 'Enter Username',
-                border: OutlineInputBorder(borderSide: BorderSide.none),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black))),
+              filled: true,
+              hintText: 'Username',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black)),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            ),
           ),
           SizedBox(
             height: 15,
@@ -108,16 +122,24 @@ class _SignupState extends State<Signup> {
           TextField(
             controller: _emailController,
             decoration: InputDecoration(
-                filled: true,
-                hintText: 'Enter Email Address',
-                border: OutlineInputBorder(borderSide: BorderSide.none),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black))),
+              filled: true,
+              hintText: 'Email Address',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black)),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            ),
           ),
           SizedBox(
             height: 15,
           ),
           TextField(
+            onChanged: (password) => onPasswordChanged(password),
             obscureText: !_isVisible,
             controller: _passwordController,
             decoration: InputDecoration(
@@ -142,10 +164,13 @@ class _SignupState extends State<Signup> {
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.black)),
-              hintText: 'Enter Password',
+              hintText: 'Password',
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Row(
             children: [
@@ -154,9 +179,52 @@ class _SignupState extends State<Signup> {
                 width: 20,
                 height: 20,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade400),
+                    color: _isPasswordEightCharacters
+                        ? Colors.green
+                        : Colors.transparent,
+                    border: _isPasswordEightCharacters
+                        ? Border.all(color: Colors.transparent)
+                        : Border.all(color: Colors.grey.shade400),
                     borderRadius: BorderRadius.circular(50)),
-              )
+                child: Center(
+                    child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 12,
+                )),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text("Contains at least 8 Characters")
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                    color: _hasOneNumber ? Colors.green : Colors.transparent,
+                    border: _hasOneNumber
+                        ? Border.all(color: Colors.transparent)
+                        : Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(50)),
+                child: Center(
+                    child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 12,
+                )),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text("Contains at least one number")
             ],
           ),
           SizedBox(

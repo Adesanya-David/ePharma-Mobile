@@ -153,7 +153,12 @@ class _LoginPageState extends State<LoginPage> {
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
-                  onPressed: {},
+                  onPressed: () {
+                    setState(() {
+                      _isVisible:
+                      !_isVisible;
+                    });
+                  },
                   icon: _isVisible
                       ? Icon(
                           Icons.visibility,
@@ -176,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                 prefixIcon: Icon(
                   Iconsax.key,
                   color: Colors.white,
-                  size: 18,
+                  size: 10,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey.shade200, width: 2),
