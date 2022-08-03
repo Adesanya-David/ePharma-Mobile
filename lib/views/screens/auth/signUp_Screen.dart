@@ -96,11 +96,18 @@ class _SignupState extends State<Signup> {
           TextField(
             controller: _usernameController,
             decoration: InputDecoration(
-                filled: true,
-                hintText: 'Username',
-                border: OutlineInputBorder(borderSide: BorderSide.none),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black))),
+              filled: true,
+              hintText: 'Username',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black)),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            ),
           ),
           SizedBox(
             height: 15,
