@@ -250,6 +250,34 @@ class _SignupState extends State<Signup> {
               borderRadius: BorderRadius.circular(10.0),
             ),
           ),
+          SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Already have an account?',
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w400),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginPage()));
+                },
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400),
+                ),
+              )
+            ],
+          ),
         ]),
       ),
     ));

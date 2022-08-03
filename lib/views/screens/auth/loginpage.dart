@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/screens/auth/forgot_password.dart';
 // import 'package:flutter_app/views/screens/auth/forgot_password.dart';
 import 'package:flutter_app/views/screens/auth/signUp_Screen.dart';
 import 'package:iconsax/iconsax.dart';
@@ -116,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(
                 filled: true,
                 contentPadding: EdgeInsets.all(0.0),
-                hintText: 'Username or E-mail',
+                hintText: 'E-mail',
                 labelStyle: TextStyle(
                   color: Colors.white,
                   fontSize: 14.0,
@@ -202,8 +203,8 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 TextButton(
                   onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (context) => forgotPassword()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ForgotPassword()));
                   },
                   child: Text(
                     'Forgot Password?',
