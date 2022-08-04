@@ -61,14 +61,14 @@ class _SignupState extends State<Signup> {
             children: [
               _image != null
                   ? CircleAvatar(
-                      radius: 64,
-                      backgroundColor: Colors.grey,
+                      radius: 55,
+                      backgroundColor: Colors.blueGrey,
                       backgroundImage: MemoryImage(_image!))
                   : CircleAvatar(
                       radius: 64,
                       backgroundColor: Colors.grey,
                       backgroundImage: NetworkImage(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBwgJx82LA3WoY4OHduFMraX31HIdpLMAdmYCfY8Kdf8yx2PpeZraq9029etC_w3RrtDM&usqp=CAU'),
+                          'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'),
                     ),
               Positioned(
                   right: 5,
