@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -42,11 +43,33 @@ class _SignupState extends State<Signup> {
 
   Uint8List? _image;
 
+  bool _isLoading = false;
+
   selectImage() async {
     Uint8List im = await AuthController().pickImage(ImageSource.gallery);
     setState(() {
       _image = im;
     });
+  }
+
+  signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthController().signUp(
+        _fullnameController.text,
+        _usernameController.text,
+        _emailController.text,
+        _passwordController.text,
+        _image);
+    setState(() {
+      _isLoading = false;
+    });
+    if (res != 'Success') {
+      return showSnackBar(res, context);
+    } else {
+      return showSnackBar('Account created successfully', context);
+    }
   }
 
   @override
@@ -231,20 +254,19 @@ class _SignupState extends State<Signup> {
             height: 30,
           ),
           MaterialButton(
-            onPressed: () async {
-              await AuthController().signUp(
-                  _fullnameController.text,
-                  _usernameController.text,
-                  _emailController.text,
-                  _passwordController.text,
-                  _image);
-            },
+            onPressed: signUpUser,
             height: 45,
             color: Colors.blueGrey,
-            child: Text(
-              "Create Account",
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
-            ),
+            child: _isLoading
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : Text(
+                    "Create Account",
+                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  ),
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
