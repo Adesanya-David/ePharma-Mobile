@@ -64,37 +64,23 @@ class AuthController {
     }
     return res;
   }
-}
 
-Future<String> logIn(String full_name, String username, String email,
-    String password, Uint8List? image) async {
-  String res = "An error occurred";
-  try {
-    if (full_name.isNotEmpty &&
-        username.isNotEmpty &&
-        password.isNotEmpty &&
-        email.isNotEmpty &&
-        image != null) {
-      UserCredential cred = await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-
-      // String downloadUrl = await _uploadImagetoStorage(image);
-
-      await firebaseStore.collection('users').doc(cred.user!.uid).set({
-        'fullName': full_name,
-        'username': username,
-        'email': email,
-        // 'image' : downloadUrl,
-      });
-      print(cred.user!.email);
-      res = 'success';
-    } else {
-      res = 'Fields cannot be empty';
+  Future<String> logIn(String email, String password) async {
+    String res = "An error occurred";
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        await firebaseAuth.signInWithEmailAndPassword(
+            email: email, password: password);
+        // print(cred.user!.email);
+        // res = 'success';
+      } else {
+        res = 'Fields cannot be empty';
+      }
+    } catch (e) {
+      res = e.toString();
     }
-  } catch (e) {
-    res = e.toString();
+    return res;
   }
-  return res;
 }
 
 showSnackBar(String content, BuildContext context) {
