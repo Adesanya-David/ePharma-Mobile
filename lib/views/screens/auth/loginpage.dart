@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/controllers/authController.dart';
 import 'package:flutter_app/views/screens/auth/forgot_password.dart';
-// import 'package:flutter_app/views/screens/auth/forgot_password.dart';
 import 'package:flutter_app/views/screens/auth/signUp_Screen.dart';
+import 'package:flutter_app/views/screens/bottom_Nav.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,8 +16,30 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   int activeIndex = 0;
-
   bool _isVisible = false;
+  bool _isLoading = false;
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
+
+  loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthController()
+        .logIn(_emailController.text, _passwordController.text);
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (res != 'Success') {
+      return showSnackBar(res, context);
+    } else {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => BottomNav()));
+    }
+  }
 
   @override
   void initState() {
@@ -113,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 40,
             ),
             TextField(
+              controller: _emailController,
               cursorColor: Colors.black,
               decoration: InputDecoration(
                 filled: true,
@@ -150,14 +174,14 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
             TextField(
+              controller: _passwordController,
               obscureText: !_isVisible,
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
-                      _isVisible:
-                      !_isVisible;
+                      _isVisible = !_isVisible;
                     });
                   },
                   icon: _isVisible
@@ -220,13 +244,23 @@ class _LoginPageState extends State<LoginPage> {
               height: 30,
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                loginUser();
+                _emailController.clear();
+                _passwordController.clear();
+              },
               height: 45,
               color: Colors.blueGrey,
-              child: Text(
-                "Login",
-                style: TextStyle(color: Colors.white, fontSize: 16.0),
-              ),
+              child: _isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    )
+                  : Text(
+                      "Login",
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
+                    ),
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),

@@ -20,6 +20,16 @@ class _SignupState extends State<Signup> {
   bool _isVisible = false;
   bool _isPasswordEightCharacters = false;
   bool _hasOneNumber = false;
+  bool _isLoading = false;
+  Uint8List? _image;
+
+  final TextEditingController _fullnameController = TextEditingController();
+
+  final TextEditingController _usernameController = TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
 
   onPasswordChanged(String password) {
     final numericRegex = RegExp(r'[0-9]');
@@ -31,19 +41,6 @@ class _SignupState extends State<Signup> {
       if (numericRegex.hasMatch(password)) _hasOneNumber = true;
     });
   }
-
-  // const Signup({Key? key}) : super(key: key);
-  final TextEditingController _fullnameController = TextEditingController();
-
-  final TextEditingController _usernameController = TextEditingController();
-
-  final TextEditingController _emailController = TextEditingController();
-
-  final TextEditingController _passwordController = TextEditingController();
-
-  Uint8List? _image;
-
-  bool _isLoading = false;
 
   selectImage() async {
     Uint8List im = await AuthController().pickImage(ImageSource.gallery);
@@ -65,6 +62,7 @@ class _SignupState extends State<Signup> {
     setState(() {
       _isLoading = false;
     });
+
     if (res != 'Success') {
       return showSnackBar(res, context);
     } else {
@@ -254,7 +252,16 @@ class _SignupState extends State<Signup> {
             height: 30,
           ),
           MaterialButton(
-            onPressed: signUpUser,
+            onPressed: () {
+              _hasOneNumber;
+              _isPasswordEightCharacters;
+              signUpUser();
+              _fullnameController.clear();
+              _usernameController.clear();
+              _emailController.clear();
+              _passwordController.clear();
+              _image!.clear();
+            },
             height: 45,
             color: Colors.blueGrey,
             child: _isLoading
